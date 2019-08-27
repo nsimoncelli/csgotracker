@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header';
+import StatsTable from './statstable';
 
 class App extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class App extends React.Component {
         <div className="container-fluid">
           <Header></Header>
         </div>
+        <StatsTable></StatsTable>
       </React.Fragment>
     );
   }
