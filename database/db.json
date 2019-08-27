@@ -1,22 +1,36 @@
 {
   "grades": [
     {
-      "name": "Dan Paschal",
-      "course": "Web Development",
-      "grade": 100,
+      "date": "8/25/2019",
+      "outcome": "loss", 
+      "kills": 24,
+      "deaths": 15,
+      "assists": 5,
       "id": 1
     },
     {
-      "name": "Scott Bowler",
-      "course": "Web Development",
-      "grade": 100,
+      "date": "8/26/2019",
+      "outcome": "win", 
+      "kills": 14,
+      "deaths": 18,
+      "assists": 4,
       "id": 2
     },
     {
-      "name": "Tim Davis",
-      "course": "Web Development",
-      "grade": 50,
+      "date": "8/27/2019",
+      "outcome": "loss", 
+      "kills": 20,
+      "deaths": 17,
+      "assists": 4,
       "id": 3
+    },
+    {
+      "date": "8/27/2019",
+      "outcome": "win", 
+      "kills": 26,
+      "deaths": 14,
+      "assists": 7,
+      "id": 4
     }
   ]
 }
