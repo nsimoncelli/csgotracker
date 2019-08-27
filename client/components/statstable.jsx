@@ -1,10 +1,12 @@
 import React from 'react';
+import StatsTableRow from './statstablerow';
 
 class StatsTable extends React.Component {
 //   constructor(props) {
 //     super(props);
 //   }
   render() {
+    // console.log('table stats', this.props);
     return (
       <div className="table-responsive">
         <table className="table">
@@ -18,20 +20,13 @@ class StatsTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-success">
-              <td>8/27/2019</td>
-              <td>24</td>
-              <td>15</td>
-              <td>{24 / 15}</td>
-              <td>5</td>
-            </tr>
-            <tr className="bg-danger">
-              <td>8/26/2019</td>
-              <td>16</td>
-              <td>24</td>
-              <td>{(16 / 24).toFixed(2)}</td>
-              <td>11</td>
-            </tr>
+            {
+              this.props.allStats.map(stat => {
+                return (<StatsTableRow key={stat.id} stats={stat}>
+
+                </StatsTableRow>);
+              })
+            }
           </tbody>
 
         </table>
