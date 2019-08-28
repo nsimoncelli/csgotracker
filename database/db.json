@@ -1,7 +1,7 @@
 {
   "stats": [
     {
-      "date": "8/25/2019",
+      "date": "08/25/2019",
       "outcome": "loss", 
       "kills": 24,
       "deaths": 15,
@@ -9,7 +9,7 @@
       "id": 1
     },
     {
-      "date": "8/26/2019",
+      "date": "08/26/2019",
       "outcome": "win", 
       "kills": 14,
       "deaths": 18,
@@ -17,7 +17,7 @@
       "id": 2
     },
     {
-      "date": "8/27/2019",
+      "date": "08/27/2019",
       "outcome": "loss", 
       "kills": 20,
       "deaths": 17,
@@ -25,7 +25,7 @@
       "id": 3
     },
     {
-      "date": "8/27/2019",
+      "date": "08/27/2019",
       "outcome": "win", 
       "kills": 26,
       "deaths": 14,
