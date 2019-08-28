@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import StatsTable from './statstable';
 import AverageStats from './averagestats';
+import AddStats from './addstats';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class App extends React.Component {
         <div className="container-fluid">
           <Header></Header>
           <AverageStats allStats={this.state.stats}></AverageStats>
+          <AddStats></AddStats>
         </div>
         <StatsTable allStats={this.state.stats}></StatsTable>
       </React.Fragment>
