@@ -24,6 +24,24 @@ class App extends React.Component {
       })
       .catch(error => console.log('ERROR!', error));
   }
+  submitStats(stats){
+    let fetchData = {
+      method: 'POST', 
+      headers: {
+            'Content-type': 'application/json'
+      },
+      body: JSON.stringify(stats)
+    }
+    fetch('/api/stats', fetchData)
+      .then(response=> response.json())
+      .then(newStatsData => {
+        this.setState({
+          stats: [...this.state.stats, newStatsData]
+        })
+        this.componentDidMount();
+      })
+      .catch(error=> console.log("ERROR POSTING STATS", error));
+  }
 
   render() {
     if (!this.state.stats) {
@@ -34,7 +52,7 @@ class App extends React.Component {
         <div className="container-fluid">
           <Header></Header>
           <AverageStats allStats={this.state.stats}></AverageStats>
-          <AddStats></AddStats>
+          <AddStats onSubmit={this.submitStats}></AddStats>
         </div>
         <StatsTable allStats={this.state.stats}></StatsTable>
       </React.Fragment>

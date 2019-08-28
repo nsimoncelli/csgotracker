@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import DatePicker from 'react-datepicker';
-import {format, parseISO} from dateFns from 'date-fns';
+import {format, parseISO} from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -26,9 +26,17 @@ class AddStats extends React.Component {
     this.handleTieChange = this.handleTieChange.bind(this);
     this.handleKillChange = this.handleKillChange.bind(this);
     this.handleAssistChange = this.handleAssistChange.bind(this);
+    this.handleDeathChange = this.handleDeathChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleDateChange(date) {
+    // var newDate = new Date(date);
+    // var formatted = format(newDate, "MM/dd/yyyy");
+    // console.log(format(newDate, "MM/dd/yyyy"));
+    // var formattedDate = format(newDate, "MM/dd/yyyy");
+    // console.log("formatted date =", formattedDate);
     this.setState({
       date: date
     });
@@ -53,23 +61,37 @@ class AddStats extends React.Component {
     var killsParsed = parseInt(event.target.value);
     console.log(killsParsed);
     this.setState({
-      kills: killsParsed
+      "kills": killsParsed
     });
   }
   handleDeathChange(event) {
     var deathsParsed = parseInt(event.target.value);
     console.log(deathsParsed);
     this.setState({
-      deaths: deathsParsed
+      "deaths": deathsParsed
     });
   }
   handleAssistChange(event) {
     var assistsParsed = parseInt(event.target.value);
     this.setState({
-      a
+      "assists": assistsParsed
     });
   }
 
+  handleSubmit(event){
+      event.preventDefault();
+      this.props.onSubmit(this.state);
+      this.handleReset();
+  }
+  handleReset(){
+      this.setState({
+        "date": new Date(),
+        "outcome": '',
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0
+      })
+  }
   render() {
     var outcomeVar = 'W/L';
     if (this.state.outcome === "win") {
@@ -83,10 +105,10 @@ class AddStats extends React.Component {
       <Form>
         <DatePicker
           selected={this.state.date}
-          onSelect={this.handleDateChange} // when day is clicked
+          onSelect={this.handleDateChange} 
           onChange={this.handleChange}
           name="startDate"
-          dateFormat="MM/dd/yyyy" // only when value has changed
+          dateFormat="MM/dd/yyyy" 
         />
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -112,12 +134,12 @@ class AddStats extends React.Component {
         </Row>
         <Row>
           <Col>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                         Submit
             </Button>
           </Col>
           <Col>
-            <Button variant="danger" type="submit">
+            <Button variant="danger" type="submit" onClick={this.handleReset}>
                         Cancel
             </Button>
           </Col>
