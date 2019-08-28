@@ -2,7 +2,7 @@
   "stats": [
     {
       "date": "08/25/2019",
-      "outcome": "loss", 
+      "outcome": "loss",
       "kills": 24,
       "deaths": 15,
       "assists": 5,
@@ -10,7 +10,7 @@
     },
     {
       "date": "08/26/2019",
-      "outcome": "win", 
+      "outcome": "win",
       "kills": 14,
       "deaths": 18,
       "assists": 4,
@@ -18,7 +18,7 @@
     },
     {
       "date": "08/27/2019",
-      "outcome": "loss", 
+      "outcome": "loss",
       "kills": 20,
       "deaths": 17,
       "assists": 4,
@@ -26,11 +26,19 @@
     },
     {
       "date": "08/27/2019",
-      "outcome": "win", 
+      "outcome": "win",
       "kills": 26,
       "deaths": 14,
       "assists": 7,
       "id": 4
+    },
+    {
+      "date": "2019-08-30T23:37:42.000Z",
+      "outcome": "",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "id": 5
     }
   ]
 }
