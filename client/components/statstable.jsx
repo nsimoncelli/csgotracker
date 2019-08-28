@@ -7,6 +7,7 @@ class StatsTable extends React.Component {
 //   }
   render() {
     // console.log('table stats', this.props);
+    
     return (
       <div className="table-responsive">
         <table className="table">

@@ -8,17 +8,17 @@ class StatsTableRow extends React.Component {
     // console.log('statstablerow = ', this.props);
     var winLossColor = '';
     if (this.props.stats.outcome === 'win') {
-      winLossColor = 'bg-success';
+      winLossColor = 'bg-success text-white';
     } else {
-      winLossColor = 'bg-danger';
+      winLossColor = 'bg-danger text-white';
     }
     return (
       <tr className={winLossColor}>
-        <td>{this.props.stats.date}</td>
-        <td>{this.props.stats.kills}</td>
-        <td>{this.props.stats.deaths}</td>
-        <td>{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
-        <td>{this.props.stats.assists}</td>
+        <td className="border border-dark text-center">{this.props.stats.date}</td>
+        <td className="border border-dark text-center">{this.props.stats.kills}</td>
+        <td className="border border-dark text-center">{this.props.stats.deaths}</td>
+        <td className="border border-dark text-center">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
+        <td className="border border-dark text-center">{this.props.stats.assists}</td>
       </tr>
     );
   }
