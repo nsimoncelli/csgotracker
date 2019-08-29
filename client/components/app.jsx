@@ -13,6 +13,7 @@ class App extends React.Component {
     this.getAllStats = this.getAllStats.bind(this);
     this.submitStats = this.submitStats.bind(this);
     this.removeStats = this.removeStats.bind(this);
+    this.createOrModify = this.createOrModify.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,17 @@ class App extends React.Component {
     .catch(error => console.log('ERROR!', error));
   }
 
+  createOrModify(statsData){
+    if(!statsData.id){
+      this.submitStats(statsData);
+    }else{
+      this.modifyStats(statsData);
+    }
+  }
+  modifyStats(stats){
+    console.log("modification stats worked!");
+  }
+
   submitStats(stats){
     let fetchData = {
       method: 'POST', 
@@ -46,7 +58,6 @@ class App extends React.Component {
         this.setState({
           stats: [...this.state.stats, newStatsData]
         })
-        // this.getAllStats;
       })
       .catch(error=> console.log("ERROR POSTING STATS", error));
       this.getAllStats;
@@ -77,9 +88,9 @@ class App extends React.Component {
         <div className="container-fluid">
           <Header></Header>
           <AverageStats allStats={this.state.stats}></AverageStats>
-          <AddStats onSubmit={this.submitStats}></AddStats>
+          <AddStats onSubmit={this.createOrModify}></AddStats>
         </div>
-        <StatsTable removeStats={this.removeStats} allStats={this.state.stats}></StatsTable>
+        <StatsTable onSubmit={this.createOrModify} removeStats={this.removeStats} allStats={this.state.stats}></StatsTable>
       </React.Fragment>
     );
   }
