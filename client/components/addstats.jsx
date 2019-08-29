@@ -111,20 +111,20 @@ class AddStats extends React.Component {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item onClick={this.handleWinChange}>Win</Dropdown.Item>
-            <Dropdown.Item onClick={this.handleLossChange}>Loss</Dropdown.Item>
-            <Dropdown.Item onClick={this.handleTieChange}>Tie</Dropdown.Item>
+            <Dropdown.Item className="bg-primary"  onClick={this.handleWinChange}>Win</Dropdown.Item>
+            <Dropdown.Item className="bg-danger"  onClick={this.handleLossChange}>Loss</Dropdown.Item>
+            <Dropdown.Item className="bg-secondary"  onClick={this.handleTieChange}>Tie</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Row>
           <Col>
-            <Form.Control onChange={this.handleKillChange} value={this.state.kills} size="sm" type="number" placeholder="Kills"/>
+            <Form.Control onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
           </Col>
           <Col>
-            <Form.Control onChange={this.handleDeathChange} value={this.state.deaths} size="sm" type="number" placeholder="Deaths"/>
+            <Form.Control onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
           </Col>
           <Col>
-            <Form.Control onChange={this.handleAssistChange} value={this.state.assists} size="sm" type="number" placeholder="Assists"/>
+            <Form.Control onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
           </Col>
         </Row>
         <Row>

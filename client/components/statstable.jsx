@@ -18,12 +18,15 @@ class StatsTable extends React.Component {
               <th scope="col">Deaths</th>
               <th scope="col">K/D</th>
               <th scope="col">Assists</th>
+              <th scope="col">Modify</th>
             </tr>
           </thead>
           <tbody>
             {
               this.props.allStats.map(stat => {
-                return (<StatsTableRow key={stat.id} stats={stat}>
+                return (<StatsTableRow
+                removeStats={this.props.removeStats}
+                key={stat.id} stats={stat}>
 
                 </StatsTableRow>);
               })

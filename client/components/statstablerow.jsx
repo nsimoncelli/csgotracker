@@ -1,8 +1,16 @@
 import React from 'react';
 import {format, parseISO} from 'date-fns';
+import Modal from 'react-bootstrap/Modal'
 
 class StatsTableRow extends React.Component {
-
+  constructor(props){
+    super(props)
+    this.removeStatHandler = this.removeStatHandler.bind(this);
+    var id = this.props.stats.id
+  }
+  removeStatHandler(id){
+    this.props.removeStats(this.props.stats.id);
+  }
   render() {
     var winLossColor = '';
     if (this.props.stats.outcome === 'win') {
@@ -13,7 +21,6 @@ class StatsTableRow extends React.Component {
       winLossColor = 'bg-secondary text-white'
     }
     let validDate = new Date(this.props.stats.date);
-    // let parsedDate = parseISO(validDate);
     let formattedDate = format(validDate, "MM/dd/yyyy");
     return (
       <tr className={winLossColor}>
@@ -22,6 +29,7 @@ class StatsTableRow extends React.Component {
         <td className="border border-dark text-center">{this.props.stats.deaths}</td>
         <td className="border border-dark text-center">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
         <td className="border border-dark text-center">{this.props.stats.assists}</td>
+        <td type="button" className="btn btn-dark" onClick={this.removeStatHandler}>Modify</td>
       </tr>
     );
   }

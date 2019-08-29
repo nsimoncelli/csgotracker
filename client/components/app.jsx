@@ -8,11 +8,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stats: [],
-      view: 'home'
+      stats: []
     };
     this.getAllStats = this.getAllStats.bind(this);
     this.submitStats = this.submitStats.bind(this);
+    this.removeStats = this.removeStats.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +52,21 @@ class App extends React.Component {
       this.getAllStats;
   }
 
+  removeStats(id){
+    console.log("remove worked", id);
+      var removeData = {
+        method: "DELETE"
+      }
+      fetch("/api/stats/"+id, removeData)
+      .then(response=> response.json())
+      .then(()=>{
+        this.setState({
+          stats: this.state.stats.filter(statObject=> statObject.id!==id)
+        })
+        console.log("removal worked", this.state.stats)
+      })
+      .catch(error=>console.log("ERROR DELETING STAT: ", error))
+  }
   render() {
     if (!this.state.stats) {
       return;
@@ -64,7 +79,7 @@ class App extends React.Component {
           <AverageStats allStats={this.state.stats}></AverageStats>
           <AddStats onSubmit={this.submitStats}></AddStats>
         </div>
-        <StatsTable allStats={this.state.stats}></StatsTable>
+        <StatsTable removeStats={this.removeStats} allStats={this.state.stats}></StatsTable>
       </React.Fragment>
     );
   }
