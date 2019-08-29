@@ -24,7 +24,6 @@ class App extends React.Component {
     fetch('/api/stats')
     .then(response => response.json())
     .then(statsDataArray => {
-      console.log(statsDataArray);
       this.setState({
         stats: statsDataArray
       });
@@ -36,11 +35,23 @@ class App extends React.Component {
     if(!statsData.id){
       this.submitStats(statsData);
     }else{
-      this.modifyStats(statsData);
+      this.modifyStats(statsData.id, statsData);
     }
   }
-  modifyStats(stats){
-    console.log("modification stats worked!");
+  modifyStats(id, stats){
+    var updateData = {
+      method: "POST",
+      body: JSON.stringify(stats),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }
+    fetch('/api/stats/'+id, updateData)
+      .then(response=> response.json())
+      .then(updatedStatsData=>{
+          console.log("SUCCESSFULLY UPDATED STATS", updatedStatsData)
+      })
+      .catch(error=>console.log("error updating stats", error))
   }
 
   submitStats(stats){
@@ -54,7 +65,6 @@ class App extends React.Component {
     fetch('/api/stats', fetchData)
       .then(response=> response.json())
       .then(newStatsData => {
-        console.log("this", this)
         this.setState({
           stats: [...this.state.stats, newStatsData]
         })
@@ -82,7 +92,6 @@ class App extends React.Component {
     if (!this.state.stats) {
       return;
     }
-    console.log("Current state:", this.state);
     return (
       <React.Fragment>
         <div className="container-fluid">

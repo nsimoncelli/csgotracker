@@ -33,6 +33,9 @@ class AddStats extends React.Component {
   }
 
   componentDidMount(){
+    if(!this.props.id){
+      return;
+    }
     if(this.props.id){
       this.setState({
         id: this.props.id
@@ -105,7 +108,6 @@ class AddStats extends React.Component {
     } else if (this.state.outcome === "tie") {
       outcomeVar = 'Tie'
     }
-
     return (
       <Form>
         <DatePicker
