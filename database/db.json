@@ -1,14 +1,6 @@
 {
   "stats": [
     {
-      "date": "08/25/2019",
-      "outcome": "loss",
-      "kills": 24,
-      "deaths": 15,
-      "assists": 5,
-      "id": 1
-    },
-    {
       "date": "08/26/2019",
       "outcome": "win",
       "kills": 14,
@@ -31,54 +23,6 @@
       "deaths": 14,
       "assists": 7,
       "id": 4
-    },
-    {
-      "date": "2019-08-31T00:46:34.000Z",
-      "outcome": "tie",
-      "kills": 24,
-      "deaths": 10,
-      "assists": 3,
-      "id": 5
-    },
-    {
-      "date": "2019-08-30T00:46:51.000Z",
-      "outcome": "",
-      "kills": 2,
-      "deaths": 25,
-      "assists": 1,
-      "id": 6
-    },
-    {
-      "date": "2019-08-29T00:52:41.534Z",
-      "outcome": "tie",
-      "kills": 4,
-      "deaths": 30,
-      "assists": 1,
-      "id": 7
-    },
-    {
-      "date": "2019-08-30T00:54:08.000Z",
-      "outcome": "loss",
-      "kills": 0,
-      "deaths": 0,
-      "assists": 0,
-      "id": 8
-    },
-    {
-      "date": "2019-08-29T00:54:56.000Z",
-      "outcome": "win",
-      "kills": 0,
-      "deaths": 0,
-      "assists": 0,
-      "id": 9
-    },
-    {
-      "date": "2019-08-29T00:55:03.064Z",
-      "outcome": "win",
-      "kills": 20,
-      "deaths": 20,
-      "assists": 1,
-      "id": 10
     }
   ]
 }
