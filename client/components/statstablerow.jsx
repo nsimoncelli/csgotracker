@@ -47,7 +47,7 @@ class StatsTableRow extends React.Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
           <ModalBody>
-           <AddStats></AddStats>
+           <AddStats id={this.props.stats.id} onSubmit={this.props.onSubmit}></AddStats>
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={this.removeStatHandler}>Delete Entry</Button>{' '}

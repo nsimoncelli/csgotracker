@@ -17,7 +17,8 @@ class AddStats extends React.Component {
       "outcome": '',
       "kills": 0,
       "deaths": 0,
-      "assists": 0
+      "assists": 0,
+      "id": null
 
     };
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -29,6 +30,14 @@ class AddStats extends React.Component {
     this.handleDeathChange = this.handleDeathChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    if(this.props.id){
+      this.setState({
+        id: this.props.id
+      })
+    }
   }
 
   handleDateChange(date) {
@@ -96,6 +105,7 @@ class AddStats extends React.Component {
     } else if (this.state.outcome === "tie") {
       outcomeVar = 'Tie'
     }
+
     return (
       <Form>
         <DatePicker
