@@ -11,19 +11,26 @@ class App extends React.Component {
       stats: [],
       view: 'home'
     };
+    this.getAllStats = this.getAllStats.bind(this);
+    this.submitStats = this.submitStats.bind(this);
   }
 
   componentDidMount() {
-    fetch('/api/stats')
-      .then(response => response.json())
-      .then(statsDataArray => {
-        console.log(statsDataArray);
-        this.setState({
-          stats: statsDataArray
-        });
-      })
-      .catch(error => console.log('ERROR!', error));
+    this.getAllStats();
   }
+
+  getAllStats(){
+    fetch('/api/stats')
+    .then(response => response.json())
+    .then(statsDataArray => {
+      console.log(statsDataArray);
+      this.setState({
+        stats: statsDataArray
+      });
+    })
+    .catch(error => console.log('ERROR!', error));
+  }
+
   submitStats(stats){
     let fetchData = {
       method: 'POST', 
@@ -35,18 +42,21 @@ class App extends React.Component {
     fetch('/api/stats', fetchData)
       .then(response=> response.json())
       .then(newStatsData => {
+        console.log("this", this)
         this.setState({
           stats: [...this.state.stats, newStatsData]
         })
-        this.componentDidMount();
+        // this.getAllStats;
       })
       .catch(error=> console.log("ERROR POSTING STATS", error));
+      this.getAllStats;
   }
 
   render() {
     if (!this.state.stats) {
       return;
     }
+    console.log("Current state:", this.state);
     return (
       <React.Fragment>
         <div className="container-fluid">

@@ -32,11 +32,6 @@ class AddStats extends React.Component {
   }
 
   handleDateChange(date) {
-    // var newDate = new Date(date);
-    // var formatted = format(newDate, "MM/dd/yyyy");
-    // console.log(format(newDate, "MM/dd/yyyy"));
-    // var formattedDate = format(newDate, "MM/dd/yyyy");
-    // console.log("formatted date =", formattedDate);
     this.setState({
       date: date
     });
@@ -123,13 +118,13 @@ class AddStats extends React.Component {
         </Dropdown>
         <Row>
           <Col>
-            <Form.Control onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
+            <Form.Control onChange={this.handleKillChange} value={this.state.kills} size="sm" type="number" placeholder="Kills"/>
           </Col>
           <Col>
-            <Form.Control onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
+            <Form.Control onChange={this.handleDeathChange} value={this.state.deaths} size="sm" type="number" placeholder="Deaths"/>
           </Col>
           <Col>
-            <Form.Control onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
+            <Form.Control onChange={this.handleAssistChange} value={this.state.assists} size="sm" type="number" placeholder="Assists"/>
           </Col>
         </Row>
         <Row>
