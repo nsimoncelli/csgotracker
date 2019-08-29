@@ -1,14 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {format, parseISO} from 'date-fns';
-import Modal from 'react-bootstrap/Modal'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import AddStats from './addstats';
+
 
 class StatsTableRow extends React.Component {
   constructor(props){
     super(props)
+    this.state={
+      modal: false
+    }
     this.removeStatHandler = this.removeStatHandler.bind(this);
+    this.toggle = this.toggle.bind(this);
     var id = this.props.stats.id
   }
-  removeStatHandler(id){
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+    removeStatHandler(id){
     this.props.removeStats(this.props.stats.id);
   }
   render() {
@@ -20,8 +31,10 @@ class StatsTableRow extends React.Component {
     } else if(this.props.stats.outcome==='tie'){
       winLossColor = 'bg-secondary text-white'
     }
+
     let validDate = new Date(this.props.stats.date);
     let formattedDate = format(validDate, "MM/dd/yyyy");
+
     return (
       <tr className={winLossColor}>
         <td className="border border-dark text-center">{formattedDate}</td>
@@ -29,7 +42,19 @@ class StatsTableRow extends React.Component {
         <td className="border border-dark text-center">{this.props.stats.deaths}</td>
         <td className="border border-dark text-center">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
         <td className="border border-dark text-center">{this.props.stats.assists}</td>
-        <td type="button" className="btn btn-dark" onClick={this.removeStatHandler}>Modify</td>
+        <td type="button" className="btn btn-dark" onClick={this.toggle}>Modify</td>
+        <div>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+          <ModalBody>
+           <AddStats></AddStats>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" onClick={this.removeStatHandler}>Delete Entry</Button>{' '}
+            <Button color="Cancel" onClick={this.toggle}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
+      </div>
       </tr>
     );
   }
