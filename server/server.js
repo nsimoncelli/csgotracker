@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express();
-const bodyparser = require('body-parser');
 var mysql = require('mysql');
 
 app.use(express.json());
@@ -10,7 +9,7 @@ var mysqlConnection = mysql.createConnection({
     password: 'root',
     database: 'GOstats'
 })
-
+// app.use('/api');
 mysqlConnection.connect((err)=>{
     if(!err){
         console.log("DB connection successfull")
@@ -20,7 +19,7 @@ mysqlConnection.connect((err)=>{
 })
 
 
-app.listen(3000, ()=>console.log("EXPRESS SERVER IS RUNNING at port # 3000"));
+app.listen(3001, ()=>console.log("EXPRESS SERVER IS RUNNING at port # 3001"));
 
 //GET ALL STATS
 app.get('/all',(req,res)=>{
