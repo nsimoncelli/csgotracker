@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   getAllStats(){
-    fetch('/api/stats')
+    fetch('/api/all')
     .then(response => response.json())
     .then(statsDataArray => {
       this.setState({

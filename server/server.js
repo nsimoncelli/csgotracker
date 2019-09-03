@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 var mysql = require('mysql');
+const router = express.Router();
 
 app.use(express.json());
 var mysqlConnection = mysql.createConnection({
@@ -9,7 +10,11 @@ var mysqlConnection = mysql.createConnection({
     password: 'root',
     database: 'GOstats'
 })
-// app.use('/api');
+
+app.use((req, res, next) => { console.log(req.path); next()})
+
+app.use('/api', router)
+
 mysqlConnection.connect((err)=>{
     if(!err){
         console.log("DB connection successfull")
@@ -22,7 +27,8 @@ mysqlConnection.connect((err)=>{
 app.listen(3001, ()=>console.log("EXPRESS SERVER IS RUNNING at port # 3001"));
 
 //GET ALL STATS
-app.get('/all',(req,res)=>{
+
+router.get('/all',(req,res)=>{
     mysqlConnection.query(`SELECT * FROM stats`,(err,rows,fields)=>{
         if(!err){
             console.log(rows);
@@ -32,8 +38,9 @@ app.get('/all',(req,res)=>{
         }
     })
 })
+
 //DELETE STATS
-app.delete('/stats/:id', (req,res)=>{
+router.delete('/stats/:id', (req,res)=>{
     mysqlConnection.query(`DELETE FROM stats WHERE id =?`, [req.params.id],(err,rows,fields)=>{
         if(!err){
             res.send("Deleted Successfully");
@@ -44,7 +51,7 @@ app.delete('/stats/:id', (req,res)=>{
 })
 
 //INSERT stats
-app.post('/stats',(req,res)=>{
+router.post('/stats',(req,res)=>{
     var {date, outcome, kills, deaths, assists} = req.query;
     var sql =  `INSERT INTO stats
                 (date, outcome, kills, deaths, assists)
@@ -60,7 +67,7 @@ app.post('/stats',(req,res)=>{
 })
 
 //UPDATE entry
-app.post('/update', (req,res,next)=>{
+router.post('/update', (req,res,next)=>{
     const {id, date, outcome, kills, deaths, assists} = req.query;
     // console.log(req.query);
     // return res.send([date, outcome, kills, deaths, assists, id]);
@@ -86,13 +93,6 @@ app.post('/update', (req,res,next)=>{
     let insert = [date, outcome, kills, deaths, assists, id];
 
     const s = mysql.format(sql, insert);
-
-    // console.log('Formatted SQL:', s);
-
-    // return res.send({
-    //     message: 'Testing',
-    //     sql: s
-    // });
 
     mysqlConnection.query(s, function(err,data){
         if(!err){
