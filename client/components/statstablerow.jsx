@@ -12,7 +12,7 @@ class StatsTableRow extends React.Component {
     }
     this.removeStatHandler = this.removeStatHandler.bind(this);
     this.toggle = this.toggle.bind(this);
-    var id = this.props.stats.id
+    var id = this.props.stats.id;
   }
   toggle() {
     this.setState(prevState => ({
@@ -48,9 +48,8 @@ class StatsTableRow extends React.Component {
         >Modify</td>
         <div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
           <ModalBody>
-           <AddStats id={this.props.stats.id} onSubmit={this.props.onSubmit} closeModal={this.toggle}></AddStats>
+            <AddStats id={this.props.stats.id} onSubmit={this.props.onSubmit} closeModal={this.toggle}></AddStats>
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={this.removeStatHandler}>Delete Entry</Button>{' '}
