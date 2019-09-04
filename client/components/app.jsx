@@ -39,14 +39,15 @@ class App extends React.Component {
     }
   }
   modifyStats(id, stats){
+    console.log("modify stats", id, stats);
     var updateData = {
       method: "POST",
-      body: JSON.stringify(stats),
       headers:{
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify(stats),
     }
-    fetch('/api/stats/'+id, updateData)
+    fetch('/api/update/', updateData)
       .then(response=> response.json())
       .then(updatedStatsData=>{
           console.log("SUCCESSFULLY UPDATED STATS", updatedStatsData)
@@ -55,6 +56,7 @@ class App extends React.Component {
   }
 
   submitStats(stats){
+    
     let fetchData = {
       method: 'POST', 
       headers: {
@@ -62,12 +64,14 @@ class App extends React.Component {
       },
       body: JSON.stringify(stats)
     }
-    fetch('/api/stats', fetchData)
+    console.log("stats", stats);
+    fetch('/api/create', fetchData)
       .then(response=> response.json())
       .then(newStatsData => {
         this.setState({
           stats: [...this.state.stats, newStatsData]
         })
+      
       })
       .catch(error=> console.log("ERROR POSTING STATS", error));
       this.getAllStats;

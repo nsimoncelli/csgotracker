@@ -86,6 +86,7 @@ class AddStats extends React.Component {
   }
 
   handleSubmit(event){
+    console.log("submit stats", this.state);
       event.preventDefault();
       this.props.onSubmit(this.state);
       this.handleReset();

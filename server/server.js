@@ -40,7 +40,7 @@ router.get('/all',(req,res)=>{
 })
 
 //DELETE STATS
-router.delete('/stats/:id', (req,res)=>{
+router.delete('/delete/:id', (req,res)=>{
     mysqlConnection.query(`DELETE FROM stats WHERE id =?`, [req.params.id],(err,rows,fields)=>{
         if(!err){
             res.send("Deleted Successfully");
@@ -51,8 +51,9 @@ router.delete('/stats/:id', (req,res)=>{
 })
 
 //INSERT stats
-router.post('/stats',(req,res)=>{
-    var {date, outcome, kills, deaths, assists} = req.query;
+router.post('/create',(req,res)=>{
+    console.log("create request", req.body);
+    var {date, outcome, kills, deaths, assists} = req.body;
     var sql =  `INSERT INTO stats
                 (date, outcome, kills, deaths, assists)
                 VALUES
@@ -68,9 +69,10 @@ router.post('/stats',(req,res)=>{
 
 //UPDATE entry
 router.post('/update', (req,res,next)=>{
-    const {id, date, outcome, kills, deaths, assists} = req.query;
+    const {id, date, outcome, kills, deaths, assists} = req.body;
     // console.log(req.query);
     // return res.send([date, outcome, kills, deaths, assists, id]);
+    console.log("request body", req.body);
     if(!id){
         res.status(400).send({
             errors:["Please make sure you supply an entry ID from table in order to modify"]
@@ -101,7 +103,6 @@ router.post('/update', (req,res,next)=>{
                 success: true,
                 data: data
             }
-            res.json(output);
         }else{
             console.log("Error posting", err)
         }
