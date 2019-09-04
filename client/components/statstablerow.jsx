@@ -38,12 +38,14 @@ class StatsTableRow extends React.Component {
 
     return (
       <tr className={winLossColor}>
-        <td className="border border-dark text-center">{formattedDate}</td>
-        <td className="border border-dark text-center">{this.props.stats.kills}</td>
-        <td className="border border-dark text-center">{this.props.stats.deaths}</td>
-        <td className="border border-dark text-center">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
-        <td className="border border-dark text-center">{this.props.stats.assists}</td>
-        <td type="button" className="btn btn-dark" onClick={this.toggle}>Modify</td>
+        <td className="border border-dark text-center p-0">{formattedDate}</td>
+        <td className="border border-dark text-center p-0">{this.props.stats.kills}</td>
+        <td className="border border-dark text-center p-0">{this.props.stats.deaths}</td>
+        <td className="border border-dark text-center p-0">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
+        <td className="border border-dark text-center p-0">{this.props.stats.assists}</td>
+        <td className="border border-dark text-center p-0" onClick={this.toggle}
+            style={{'backgroundColor': 'black'}}
+        >Modify</td>
         <div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>

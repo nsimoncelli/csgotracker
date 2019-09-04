@@ -9,12 +9,12 @@ class StatsTable extends React.Component {
         <table className="table">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Kills</th>
-              <th scope="col">Deaths</th>
-              <th scope="col">K/D</th>
-              <th scope="col">Assists</th>
-              <th scope="col">Modify</th>
+              <th className="text-center p-0" scope="col">Date</th>
+              <th className="text-center p-0" scope="col">Kills</th>
+              <th className="text-center p-0"  scope="col">Deaths</th>
+              <th className="text-center p-0"  scope="col">K/D</th>
+              <th className="text-center p-0"  scope="col">Assists</th>
+              <th className="text-center p-0"  scope="col">Modify</th>
             </tr>
           </thead>
           <tbody>
