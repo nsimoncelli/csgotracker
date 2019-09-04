@@ -48,9 +48,10 @@ class App extends React.Component {
       body: JSON.stringify(stats),
     }
     fetch('/api/update/', updateData)
-      .then(response=> response.json())
-      .then(updatedStatsData=>{
-          console.log("SUCCESSFULLY UPDATED STATS", updatedStatsData)
+      .then(response=> {response.json()})
+      .then(()=>{
+          console.log("SUCCESSFULLY UPDATED STATS")
+          this.getAllStats();
       })
       .catch(error=>console.log("error updating stats", error))
   }
@@ -71,10 +72,10 @@ class App extends React.Component {
         this.setState({
           stats: [...this.state.stats, newStatsData]
         })
-      
+        this.getAllStats();
       })
       .catch(error=> console.log("ERROR POSTING STATS", error));
-      this.getAllStats;
+      this.getAllStats();
   }
 
   removeStats(id){
@@ -82,12 +83,14 @@ class App extends React.Component {
       var removeData = {
         method: "DELETE"
       }
-      fetch("/api/stats/"+id, removeData)
-      .then(response=> response.json())
-      .then(()=>{
+      fetch("/api/delete/"+id, removeData)
+      .then(response=> {console.log(response); response.json()})
+      .then(myJson=>{
+        console.log("myJson", myJson);
         this.setState({
           stats: this.state.stats.filter(statObject=> statObject.id!==id)
         })
+        this.getAllStats();
         console.log("removal worked", this.state.stats)
       })
       .catch(error=>console.log("ERROR DELETING STAT: ", error))

@@ -90,6 +90,7 @@ class AddStats extends React.Component {
       event.preventDefault();
       this.props.onSubmit(this.state);
       this.handleReset();
+      this.props.closeModal();
   }
   handleReset(){
       this.setState({
