@@ -26,11 +26,11 @@ class StatsTableRow extends React.Component {
   render() {
     var winLossColor = '';
     if (this.props.stats.outcome === 'win') {
-      winLossColor = 'bg-primary text-white';
+      winLossColor = 'win';
     } else if(this.props.stats.outcome==='loss') {
-      winLossColor = 'bg-danger text-white';
+      winLossColor = 'loss';
     } else if(this.props.stats.outcome==='tie'){
-      winLossColor = 'bg-secondary text-white'
+      winLossColor = 'tie'
     }
 
     let validDate = new Date(this.props.stats.date);
@@ -43,7 +43,7 @@ class StatsTableRow extends React.Component {
         <td className="border border-dark text-center p-0">{this.props.stats.deaths}</td>
         <td className="border border-dark text-center p-0">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
         <td className="border border-dark text-center p-0">{this.props.stats.assists}</td>
-        <td className="border border-dark text-center p-0" onClick={this.toggle}
+        <td className="border border-dark text-center p-0 text-light" onClick={this.toggle}
             style={{'backgroundColor': 'black'}}
         >Modify</td>
         <div>

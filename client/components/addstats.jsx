@@ -90,7 +90,7 @@ class AddStats extends React.Component {
       event.preventDefault();
       this.props.onSubmit(this.state);
       this.handleReset();
-      this.props.closeModal();
+      // this.props.closeModal();
   }
   handleReset(){
       this.setState({
@@ -111,6 +111,7 @@ class AddStats extends React.Component {
       outcomeVar = 'Tie'
     }
     return (
+
       <Form>
         <DatePicker
           selected={this.state.date}
@@ -125,22 +126,22 @@ class AddStats extends React.Component {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item className="bg-primary"  onClick={this.handleWinChange}>Win</Dropdown.Item>
+            <Dropdown.Item className="win"  onClick={this.handleWinChange}>Win</Dropdown.Item>
             <Dropdown.Item className="bg-danger"  onClick={this.handleLossChange}>Loss</Dropdown.Item>
             <Dropdown.Item className="bg-secondary"  onClick={this.handleTieChange}>Tie</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Row>
+        <div>
           <Col>
-            <Form.Control onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
+            <Form.Control className="w-25 mb-1" onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
           </Col>
           <Col>
-            <Form.Control onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
+            <Form.Control className="w-25 mb-1"  onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
           </Col>
           <Col>
-            <Form.Control onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
+            <Form.Control className="w-25 mb-1" onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
           </Col>
-        </Row>
+        </div>
         <Row>
           <Col>
             <Button variant="primary" type="submit" onClick={this.handleSubmit}>
@@ -154,6 +155,7 @@ class AddStats extends React.Component {
           </Col>
         </Row>
       </Form>
+      
     );
   }
 }

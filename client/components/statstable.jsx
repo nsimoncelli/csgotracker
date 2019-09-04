@@ -11,10 +11,10 @@ class StatsTable extends React.Component {
             <tr>
               <th className="text-center p-0" scope="col">Date</th>
               <th className="text-center p-0" scope="col">Kills</th>
-              <th className="text-center p-0"  scope="col">Deaths</th>
-              <th className="text-center p-0"  scope="col">K/D</th>
-              <th className="text-center p-0"  scope="col">Assists</th>
-              <th className="text-center p-0"  scope="col">Modify</th>
+              <th className="text-center p-0" scope="col">Deaths</th>
+              <th className="text-center p-0" scope="col">K/D</th>
+              <th className="text-center p-0" scope="col">Assists</th>
+              <th className="text-center p-0" scope="col">Modify</th>
             </tr>
           </thead>
           <tbody>
