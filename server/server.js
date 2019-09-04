@@ -27,7 +27,6 @@ mysqlConnection.connect((err)=>{
 app.listen(3001, ()=>console.log("EXPRESS SERVER IS RUNNING at port # 3001"));
 
 //GET ALL STATS
-
 router.get('/all',(req,res)=>{
     mysqlConnection.query(`SELECT * FROM stats`,(err,rows,fields)=>{
         if(!err){
@@ -43,14 +42,18 @@ router.get('/all',(req,res)=>{
 router.delete('/delete/:id', (req,res)=>{
     mysqlConnection.query(`DELETE FROM stats WHERE id =?`, [req.params.id],(err,rows,fields)=>{
         if(!err){
-            res.send("Deleted Successfully");
+            const output = {
+                success: true,
+                data: data
+            }
+            res.send(output)
         }else{
             console.log(err)
         }
     })
 })
 
-//INSERT stats
+//CREATE new entry
 router.post('/create',(req,res)=>{
     console.log("create request", req.body);
     var {date, outcome, kills, deaths, assists} = req.body;
@@ -60,7 +63,11 @@ router.post('/create',(req,res)=>{
                 (?,?,?,?,?)`
     mysqlConnection.query(sql, [date, outcome, kills, deaths, assists], function(err,data){
         if(!err){
-            res.send("Post successful!")
+            const output = {
+                success: true,
+                data: data
+            }
+            res.send(output)
         }else{
             console.log("Error posting", err)
         }
@@ -98,11 +105,11 @@ router.post('/update', (req,res,next)=>{
 
     mysqlConnection.query(s, function(err,data){
         if(!err){
-            res.send("Post successful!")
             const output = {
                 success: true,
                 data: data
             }
+            res.send(output)
         }else{
             console.log("Error posting", err)
         }
