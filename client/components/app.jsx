@@ -3,17 +3,26 @@ import Header from './header';
 import StatsTable from './statstable';
 import AverageStats from './averagestats';
 import AddStats from './addstats';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stats: []
+      stats: [],
+      modal: false
     };
     this.getAllStats = this.getAllStats.bind(this);
     this.submitStats = this.submitStats.bind(this);
     this.removeStats = this.removeStats.bind(this);
     this.createOrModify = this.createOrModify.bind(this);
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   componentDidMount() {
@@ -104,7 +113,12 @@ class App extends React.Component {
         <div className="container-fluid">
           <Header></Header>
           <AverageStats allStats={this.state.stats}></AverageStats>
-          <AddStats onSubmit={this.createOrModify}></AddStats>
+          <Button color="danger" onClick={this.toggle}>Add stats</Button>
+          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+              <AddStats onSubmit={this.createOrModify}></AddStats>
+          </Modal>
+          {/* <AddStats onSubmit={this.createOrModify}></AddStats> */}
         </div>
         <StatsTable onSubmit={this.createOrModify} removeStats={this.removeStats} allStats={this.state.stats}></StatsTable>
       </React.Fragment>
