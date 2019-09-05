@@ -59,3 +59,21 @@ background: linear-gradient(90deg, rgba(255,0,0,0.8272351176798844) 0%, rgba(255
 .tie{
     background: linear-gradient(90deg, rgba(140,136,136,0.8272351176798844) 0%, rgba(246,231,230,0.4322771344866071) 100%);    
 }
+.dropDownWidth{
+    width: 20%;
+}
+.dropDownColor{
+    background-color: bisque;
+    opacity: 50%;
+}
+.dropDownDivLength{
+    width: 20%;
+}
+.statsDropdown{
+    background-color: blue;
+    color: white;
+}
+.modalWidth{
+    left: 4%;
+    width: 80%;
+}

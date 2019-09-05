@@ -77,8 +77,6 @@ router.post('/create',(req,res)=>{
 //UPDATE entry
 router.post('/update', (req,res,next)=>{
     const {id, date, outcome, kills, deaths, assists} = req.body;
-    // console.log(req.query);
-    // return res.send([date, outcome, kills, deaths, assists, id]);
     console.log("request body", req.body);
     if(!id){
         res.status(400).send({
