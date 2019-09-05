@@ -5,7 +5,7 @@ class StatsTable extends React.Component {
   render() {
     
     return (
-      <div className="table-responsive">
+      <div className="table-responsive statsTable">
         <table className="table">
           <thead className="thead-dark">
             <tr>
