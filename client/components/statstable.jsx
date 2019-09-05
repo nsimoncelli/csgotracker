@@ -10,7 +10,7 @@ class StatsTable extends React.Component {
           <thead className="thead-dark">
             <tr>
               <th className="text-center p-0" scope="col">Date</th>
-              <th className="text-center p-0" scope="col">Kills</th>
+              <th className="text-center p-0" scope="col">Frags</th>
               <th className="text-center p-0" scope="col">Deaths</th>
               <th className="text-center p-0" scope="col">K/D</th>
               <th className="text-center p-0" scope="col">Assists</th>
