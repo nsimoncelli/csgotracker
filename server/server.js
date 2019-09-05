@@ -44,7 +44,7 @@ router.delete('/delete/:id', (req,res)=>{
         if(!err){
             const output = {
                 success: true,
-                data: data
+                data: rows
             }
             res.send(output)
         }else{

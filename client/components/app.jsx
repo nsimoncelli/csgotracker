@@ -77,10 +77,7 @@ class App extends React.Component {
     console.log("stats", stats);
     fetch('/api/create', fetchData)
       .then(response=> response.json())
-      .then(newStatsData => {
-        this.setState({
-          stats: [...this.state.stats, newStatsData]
-        })
+      .then(() => {
         this.getAllStats();
       })
       .catch(error=> console.log("ERROR POSTING STATS", error));
@@ -112,11 +109,19 @@ class App extends React.Component {
       <React.Fragment>
         <div className="container-fluid">
           <Header></Header>
-          <AverageStats allStats={this.state.stats}></AverageStats>
-          <Button color="danger" onClick={this.toggle}>Add stats</Button>
+          <div className="row">
+            <div className="col">
+              <Button color="danger" onClick={this.toggle}>Add stats</Button>
+            </div>
+            <div className="col">
+              <AverageStats allStats={this.state.stats}></AverageStats>
+            </div>
+          </div>
+          {/* <AverageStats allStats={this.state.stats}></AverageStats>
+          <Button color="danger" onClick={this.toggle}>Add stats</Button> */}
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-              <AddStats onSubmit={this.createOrModify}></AddStats>
+              <ModalHeader toggle={this.toggle}>Input Stats</ModalHeader>
+              <AddStats onSubmit={this.createOrModify} toggleOff={this.toggle}></AddStats>
           </Modal>
           {/* <AddStats onSubmit={this.createOrModify}></AddStats> */}
         </div>
