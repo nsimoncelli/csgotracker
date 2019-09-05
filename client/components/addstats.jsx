@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import DatePicker from 'react-datepicker';
-import {format, parseISO} from 'date-fns';
+// import {format, parseISO} from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -86,12 +86,17 @@ class AddStats extends React.Component {
   }
 
   handleSubmit(event){
+      if(!this.state.outcome|| !this.state.deaths || !this.state.kills || !this.state.assists){
+        return;
+      }
       event.preventDefault();
       this.props.onSubmit(this.state);
       this.handleReset();
+      this.props.toggleOff();
       
   }
   handleReset(){
+    this.props.toggleOff();
       this.setState({
         "date": new Date(),
         "outcome": '',
@@ -101,7 +106,7 @@ class AddStats extends React.Component {
       })
   }
   render() {
-    var outcomeVar = 'W/L';
+    var outcomeVar = 'W/L/T';
     if (this.state.outcome === "win") {
       outcomeVar = 'Win'
     } else if (this.state.outcome === "loss") {
@@ -109,46 +114,54 @@ class AddStats extends React.Component {
     } else if (this.state.outcome === "tie") {
       outcomeVar = 'Tie'
     }
+    console.log("add stats props", this.props);
     return (
 
-      <Form>
-        <DatePicker
-          selected={this.state.date}
-          onSelect={this.handleDateChange} 
-          onChange={this.handleChange}
-          name="startDate"
-          dateFormat="MM/dd/yyyy" 
-        />
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            {outcomeVar}
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item className="win"  onClick={this.handleWinChange}>Win</Dropdown.Item>
-            <Dropdown.Item className="bg-danger"  onClick={this.handleLossChange}>Loss</Dropdown.Item>
-            <Dropdown.Item className="bg-secondary"  onClick={this.handleTieChange}>Tie</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <div>
-          <Col>
-            <Form.Control className="w-25 mb-1" onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
+      <Form className="statsInput">
+        <Row className="d-flex justify-content-center">
+          <Col  className="d-flex justify-content-center">
+            <DatePicker
+              className="border border-primary"
+              selected={this.state.date}
+              onSelect={this.handleDateChange} 
+              onChange={this.handleChange}
+              name="startDate"
+              size="lg"
+              dateFormat="MM/dd/yyyy" 
+            />
           </Col>
-          <Col>
-            <Form.Control className="w-25 mb-1"  onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
+          <Col  className="d-flex justify-content-center">
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                {outcomeVar}
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="dropDownDivLength">
+                <Dropdown.Item className="win"  onClick={this.handleWinChange}>Win</Dropdown.Item>
+                <Dropdown.Item className="loss"  onClick={this.handleLossChange}>Loss</Dropdown.Item>
+                <Dropdown.Item className="tie"  onClick={this.handleTieChange}>Tie</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Col>
-          <Col>
-            <Form.Control className="w-25 mb-1" onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
-          </Col>
-        </div>
+        </Row>
         <Row>
           <Col>
-            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
+            <Form.Control className="align-self-center" onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
+          </Col>
+          <Col>
+            <Form.Control className="align-self-center"  onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
+          </Col>
+          <Col>
+            <Form.Control className="align-self-center" onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button  className="btn-block" variant="primary" type="submit" onClick={this.handleSubmit}>
                         Submit
             </Button>
           </Col>
           <Col>
-            <Button variant="danger" type="submit" onClick={this.handleReset}>
+            <Button className="btn-block" variant="danger" type="submit" onClick={this.handleReset}>
                         Cancel
             </Button>
           </Col>

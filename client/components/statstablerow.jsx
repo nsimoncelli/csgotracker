@@ -47,7 +47,7 @@ class StatsTableRow extends React.Component {
             style={{'backgroundColor': 'black'}}
         >Modify</td>
         <div>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className +"  modalWidth"}>
           <ModalBody>
             <AddStats id={this.props.stats.id} onSubmit={this.props.onSubmit} closeModal={this.toggle}></AddStats>
           </ModalBody>

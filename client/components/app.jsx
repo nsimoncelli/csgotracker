@@ -17,8 +17,18 @@ class App extends React.Component {
     this.removeStats = this.removeStats.bind(this);
     this.createOrModify = this.createOrModify.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.handleModalToggle = this.handleModalToggle.bind(this);
   }
 
+  handleModalToggle(){
+    if(this.state.modal){
+      this.setState({
+        modal: false
+      })
+    }else{
+      return;
+    }
+  }
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
@@ -111,19 +121,20 @@ class App extends React.Component {
           <Header></Header>
           <div className="row">
             <div className="col">
-              <Button color="danger" onClick={this.toggle}>Add stats</Button>
-            </div>
-            <div className="col">
               <AverageStats allStats={this.state.stats}></AverageStats>
             </div>
+            <div className="col">
+              <Button color="danger" onClick={this.toggle}>Add stats</Button>
+            </div>
           </div>
-          {/* <AverageStats allStats={this.state.stats}></AverageStats>
-          <Button color="danger" onClick={this.toggle}>Add stats</Button> */}
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <ModalHeader toggle={this.toggle}>Input Stats</ModalHeader>
-              <AddStats onSubmit={this.createOrModify} toggleOff={this.toggle}></AddStats>
+          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className+" modalWidth rounded "}>
+              <ModalHeader className="d-flex justify-content-center mb-0">
+                <h4>Input Stats</h4>
+              </ModalHeader>
+              <ModalBody className="d-flex justify-content-center">
+              <AddStats onSubmit={this.createOrModify} toggleOff={this.handleModalToggle}></AddStats>
+              </ModalBody>
           </Modal>
-          {/* <AddStats onSubmit={this.createOrModify}></AddStats> */}
         </div>
         <StatsTable onSubmit={this.createOrModify} removeStats={this.removeStats} allStats={this.state.stats}></StatsTable>
       </React.Fragment>
