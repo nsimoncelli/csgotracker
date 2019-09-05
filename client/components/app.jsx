@@ -117,15 +117,12 @@ class App extends React.Component {
     }
     return (
       <React.Fragment>
+      
         <div className="container-fluid">
           <Header></Header>
           <div className="row">
-            <div className="col">
               <AverageStats allStats={this.state.stats}></AverageStats>
-            </div>
-            <div className="col">
               <Button color="danger" onClick={this.toggle}>Add stats</Button>
-            </div>
           </div>
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className+" modalWidth rounded "}>
               <ModalHeader className="d-flex justify-content-center mb-0">
@@ -138,6 +135,7 @@ class App extends React.Component {
         </div>
         <StatsTable onSubmit={this.createOrModify} removeStats={this.removeStats} allStats={this.state.stats}></StatsTable>
       </React.Fragment>
+      
     );
   }
 }
