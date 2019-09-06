@@ -6,7 +6,7 @@ class StatsTable extends React.Component {
     
     return (
       <div className="table-responsive statsTable">
-        <table className="table">
+        <table className="table collapseTable">
           <thead className="thead-dark">
             <tr>
               <th className="text-center p-0" scope="col">Date</th>
