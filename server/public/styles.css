@@ -98,7 +98,22 @@ background: linear-gradient(90deg, rgba(255,0,0,0.8272351176798844) 0%, rgba(255
 }
 .collapseTable{
     border-collapse: separate;
-    letter-spacing: .5px;
+    letter-spacing: .6px;
+}
+.buttonWidth{
+    width: 100%;
+    font-size: 100%;
+    letter-spacing: 1px;
+}
+/*IPHONEX HORIZONTAL*/
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : landscape) { 
+    .collapseTable{
+        font-size: 200%;
+    }
 }
 /*IPHONE X VERTICAL*/
 @media only screen 
