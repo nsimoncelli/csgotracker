@@ -37,7 +37,7 @@ class StatsTableRow extends React.Component {
     let formattedDate = format(validDate, "MM/dd/yyyy");
 
     return (
-      <tr className={winLossColor}>
+      <tr className={winLossColor+" tableRowHeight"}>
         <td className="border border-dark text-center p-0">{formattedDate}</td>
         <td className="border border-dark text-center p-0">{this.props.stats.kills}</td>
         <td className="border border-dark text-center p-0">{this.props.stats.deaths}</td>
