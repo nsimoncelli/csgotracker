@@ -42,7 +42,7 @@ class StatsTableRow extends React.Component {
         <td className="border border-dark text-center p-0">{this.props.stats.kills}</td>
         <td className="border border-dark text-center p-0">{this.props.stats.deaths}</td>
         <td className="border border-dark text-center p-0">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
-        <td className="border border-dark text-center p-0">{this.props.stats.assists}</td>
+        <td className="border border-dark text-center p-0 assistsSmaller">{this.props.stats.assists}</td>
         <td className="border border-dark text-center p-0 text-light" onClick={this.toggle}
             style={{'backgroundColor': 'black'}}
         >Modify</td>

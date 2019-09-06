@@ -6,7 +6,7 @@
   }
 body {
     font-family: 'csgofont';
-    font-size: 2vh;
+    /* font-size: 2vh; */
     background-image: url("https://dmarket.com/blog/best-csgo-wallpapers/tercsgo_huc01d3a403c050d47715d6aeed15b344f_839613_1920x1080_resize_q90_box.jpg");
     background-size: auto;
     background-repeat: no-repeat;
@@ -24,7 +24,6 @@ body {
 		background-position: 0% 50%;
 	}
 }
-
 
 
 .container {
@@ -48,11 +47,6 @@ h5 {
     font-weight:300;
 }
 
-a,
-a:hover {
-    text-decoration: none;
-    color: #ddd;
-}
 
 .win{
 background: linear-gradient(90deg, rgba(44,245,24,1) 0%, rgba(4,79,11,0.7488037451308649) 100%);
@@ -112,7 +106,7 @@ and (max-device-width : 812px)
 and (-webkit-device-pixel-ratio : 3)
 and (orientation : landscape) { 
     .collapseTable{
-        font-size: 200%;
+        font-size: 150%;
     }
 }
 /*IPHONE X VERTICAL*/
@@ -122,16 +116,21 @@ and (max-device-width : 812px)
 and (-webkit-device-pixel-ratio : 3)
 and (orientation : portrait) { 
     .statsTable{
-        width: 110%;
+        width: 100%;
+    }
+    .collapseTable{
+        font-size: 80%;
     }
 }
-/*IPHONE6/7/8 VERTICAL*/
+/* IPHONE6/7/8 VERTICAL*/
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
 and (orientation : portrait) { 
-
-    html{
-        width: 100%;
+    body{
+        font-size: 2vh;
+    }
+    .tableRowHeight{
+        height: 3vh;
     }
 }

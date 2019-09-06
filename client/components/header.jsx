@@ -5,7 +5,7 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <h3 className =" ml-5 col col-md-6 col-lg-6 col-s-6 col-xs-6">CS-GO Stats Table</h3>
+        <h3 className ="col col-md-6 col-lg-6 col-s-6 col-xs-6">CS-GO Stats Table</h3>
       </header>);
   }
 }
