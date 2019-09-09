@@ -30,7 +30,7 @@ class AverageStats extends React.Component {
     View All Stats
         </Dropdown.Toggle>
 
-        <Dropdown.Menu className="rounded">
+        <Dropdown.Menu className="viewAllStats">
           <Dropdown.Item href="#/action-0">Total Games = {totalGamesPlayed}</Dropdown.Item>
           <Dropdown.Item href="#/action-1">Total Kills = {totalKills}</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Total Deaths = {totalDeaths}</Dropdown.Item>
