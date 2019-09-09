@@ -85,10 +85,11 @@ background: linear-gradient(90deg, rgba(255,0,0,0.8272351176798844) 0%, rgba(255
     height: 110vh;
 }
 .modal-content{
-    background-image: url("./images/modal-background.jpg");
-    background-size: cover;
+    background-image: url("https://initiate.alphacoders.com/images/715/stretched-1920-1080-715035.png?9629");
+    /* background-size: cover; */
     background-repeat: no-repeat;
     border: yellow solid 1px;
+    /* width: 140%; */
 }
 .collapseTable{
     border-collapse: separate;
@@ -109,12 +110,40 @@ and (orientation : landscape) {
         font-size: 150%;
     }
 }
+
+/* IPHONE6/7/8 VERTICAL*/
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : portrait) { 
+    body{
+        background-image: url("./images/vertical-phone-background.jpg");
+        background-size: 375px 667px;
+        font-size: 2vh;
+    }
+    .tableRowHeight{
+        height: 3vh;
+    }
+    .modal-content{
+        left: 25%;
+        background-size: contain;
+    }
+}
 /*IPHONE X VERTICAL*/
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 812px) 
 and (-webkit-device-pixel-ratio : 3)
 and (orientation : portrait) { 
+    body{
+        background-image: url("./images/vertical-phone-background.jpg");
+        background-size: 375px 812px;
+        /* background-repeat: no-repeat; */
+    }
+    .modal-content{
+        left: 25%;
+        /* background-size: 225px 240px; */
+    }
     .statsTable{
         width: 100%;
     }
@@ -122,15 +151,12 @@ and (orientation : portrait) {
         font-size: 80%;
     }
 }
-/* IPHONE6/7/8 VERTICAL*/
 @media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) 
 and (orientation : portrait) { 
+
     body{
-        font-size: 2vh;
+        background-size: 414px 736px;
     }
-    .tableRowHeight{
-        height: 3vh;
-    }
-}
+ }
