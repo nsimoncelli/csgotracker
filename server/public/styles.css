@@ -6,7 +6,6 @@
   }
 body {
     font-family: 'csgofont';
-    /* font-size: 2vh; */
     background-image: url("https://dmarket.com/blog/best-csgo-wallpapers/tercsgo_huc01d3a403c050d47715d6aeed15b344f_839613_1920x1080_resize_q90_box.jpg");
     background-size: auto;
     background-repeat: no-repeat;
@@ -47,7 +46,9 @@ h5 {
     font-weight:300;
 }
 
-
+.small-screen-inputs{
+    display: none;
+}
 .win{
 background: linear-gradient(90deg, rgba(44,245,24,1) 0%, rgba(4,79,11,0.7488037451308649) 100%);
 }
@@ -84,12 +85,12 @@ background: linear-gradient(90deg, rgba(255,0,0,0.8272351176798844) 0%, rgba(255
     width: 110vw;
     height: 110vh;
 }
+
 .modal-content{
-    background-image: url("https://initiate.alphacoders.com/images/715/stretched-1920-1080-715035.png?9629");
-    /* background-size: cover; */
+     background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+     background-blend-mode: multiply,multiply;
     background-repeat: no-repeat;
-    border: yellow solid 1px;
-    /* width: 140%; */
+    border: black solid 1px;
 }
 .collapseTable{
     border-collapse: separate;
@@ -128,6 +129,12 @@ and (orientation : portrait) {
         left: 25%;
         background-size: contain;
     }
+    .regular-sized-inputs{
+        display: none;
+    }
+    .small-screen-inputs{
+        display: inline-block;
+    }
 }
 /*IPHONE X VERTICAL*/
 @media only screen 
@@ -149,6 +156,12 @@ and (orientation : portrait) {
     }
     .collapseTable{
         font-size: 80%;
+    }
+    .regular-sized-inputs{
+        display: none;
+    }
+    .small-screen-inputs{
+        display: inline-block;
     }
 }
 @media only screen 

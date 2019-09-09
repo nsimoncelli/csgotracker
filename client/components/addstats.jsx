@@ -145,13 +145,24 @@ class AddStats extends React.Component {
         </Row>
         <Row>
           <Col>
-            <Form.Control className="align-self-center" onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
+            <Form.Control className="align-self-center regular-sized-inputs" onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
           </Col>
           <Col>
-            <Form.Control className="align-self-center"  onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
+            <Form.Control className="align-self-center regular-sized-inputs"  onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
           </Col>
           <Col>
-            <Form.Control className="align-self-center" onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
+            <Form.Control className="align-self-center regular-sized-inputs" onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Control className="align-self-center small-screen-inputs" onChange={this.handleKillChange} size="sm" type="number" placeholder="K"/>
+          </Col>
+          <Col>
+            <Form.Control className="align-self-center small-screen-inputs"  onChange={this.handleDeathChange} size="sm" type="number" placeholder="D"/>
+          </Col>
+          <Col>
+            <Form.Control className="align-self-center small-screen-inputs" onChange={this.handleAssistChange} size="sm" type="number" placeholder="A"/>
           </Col>
         </Row>
         <Row>
