@@ -112,7 +112,11 @@ and (max-device-width : 812px)
 and (-webkit-device-pixel-ratio : 3)
 and (orientation : landscape) { 
     .collapseTable{
-        font-size: 150%;
+        font-size: 130%;
+    }
+    body{
+        background-image: url("./images/horizontal-background-mobile.jpg");
+        background-size: cover;
     }
 }
 
@@ -140,6 +144,16 @@ and (orientation : portrait) {
         display: inline-block;
     }
 }
+/*Iphone6/7/8 horizontal*/
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) 
+and (orientation : landscape) {
+    body{
+        background-image: url("./images/horizontal-background-mobile.jpg");
+        background-size: cover;
+    }
+ }
 /*IPHONE X VERTICAL*/
 @media only screen 
 and (min-device-width : 375px) 
@@ -168,6 +182,7 @@ and (orientation : portrait) {
         display: inline-block;
     }
 }
+/*iphone 6/7/8plus vertical*/
 @media only screen 
 and (min-device-width : 414px) 
 and (max-device-width : 736px) 
