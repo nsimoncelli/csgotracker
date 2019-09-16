@@ -89,13 +89,22 @@ class AddStats extends React.Component {
       if(!this.state.outcome|| !this.state.deaths || !this.state.kills || !this.state.assists){
         return;
       }
+      if(this.props.closeModal){
+        this.props.closeModal();
+      }
       event.preventDefault();
       this.props.onSubmit(this.state);
       this.handleReset();
       this.props.toggleOff();
       
+
+      
   }
   handleReset(){
+    if(!this.props.closeModal){
+      // this.props.closeModal();
+      console.log("it worked")
+    }
     this.props.toggleOff();
       this.setState({
         "date": new Date(),
@@ -106,6 +115,7 @@ class AddStats extends React.Component {
       })
   }
   render() {
+    // console.log("add stats close mdal", this.props);
     var outcomeVar = 'W/L/T';
     if (this.state.outcome === "win") {
       outcomeVar = 'Win'
