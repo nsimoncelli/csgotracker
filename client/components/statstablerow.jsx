@@ -32,7 +32,7 @@ class StatsTableRow extends React.Component {
     } else if(this.props.stats.outcome==='tie'){
       winLossColor = 'tie'
     }
-    console.log("dates", this.props.stats.date)
+    
     let validDate = new Date(this.props.stats.date);
     let formattedDate = format(validDate, "MM/dd/yyyy");
 
