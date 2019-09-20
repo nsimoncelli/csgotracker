@@ -13,13 +13,13 @@ app.use((req, res, next) => { console.log(req.path); next()})
 
 app.use('/api', router)
 
-mysqlConnection.connect((err)=>{
-    if(!err){
-        console.log("DB connection successfull")
-    }else {
-        console.log("DB connection failed, ERROR:" +JSON.stringify(err,undefined,2));
-    }
-})
+// mysqlConnection.connect((err)=>{
+//     if(!err){
+//         console.log("DB connection successfull")
+//     }else {
+//         console.log("DB connection failed, ERROR:" +JSON.stringify(err,undefined,2));
+//     }
+// })
 
 
 app.listen(3001, ()=>console.log("EXPRESS SERVER IS RUNNING at port # 3001"));
