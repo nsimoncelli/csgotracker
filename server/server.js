@@ -1,17 +1,13 @@
 const path = require('path');
 const express = require('express')
 const app = express();
+const creds = require('./mysql_credentials.js');
 var mysql = require('mysql');
 const router = express.Router();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-var mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'GOstats'
-})
+var mysqlConnection = mysql.createConnection(creds);
 
 app.use((req, res, next) => { console.log(req.path); next()})
 
