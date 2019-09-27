@@ -35,6 +35,7 @@ class StatsTableRow extends React.Component {
     
     let validDate = new Date(this.props.stats.date);
     let formattedDate = format(validDate, "MM/DD/YYYY");
+    // console.log("formatted date", formattedDate);
 
     return (
       <tr className={winLossColor+" tableRowHeight"}>
@@ -43,7 +44,7 @@ class StatsTableRow extends React.Component {
         <td className="border border-dark text-center p-0">{this.props.stats.deaths}</td>
         <td className="border border-dark text-center p-0">{(this.props.stats.kills / this.props.stats.deaths).toFixed(2)}</td>
         <td className="border border-dark text-center p-0 assistsSmaller">{this.props.stats.assists}</td>
-        <td className="border border-dark text-center p-0 text-light" onClick={this.toggle}
+        <td className="border border-dark text-center p-0 text-light modifyGlow" onClick={this.toggle}
             style={{'backgroundColor': 'black'}}
         >Modify</td>
         <div>
