@@ -89,6 +89,9 @@ class AddStats extends React.Component {
       if(!this.state.outcome|| !this.state.deaths || !this.state.kills || !this.state.assists){
         return;
       }
+      if(this.state.kills<0 || this.state.deaths <0 || this.state.assists <0){
+        return;
+      }
       if(this.props.closeModal){
         this.props.closeModal();
       }
