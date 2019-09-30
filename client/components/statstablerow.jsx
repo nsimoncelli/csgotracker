@@ -50,7 +50,7 @@ class StatsTableRow extends React.Component {
         <div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className +"  modalWidth"}>
           <ModalBody>
-            <AddStats id={this.props.stats.id} onSubmit={this.props.onSubmit} closeModal={this.toggle}></AddStats>
+            <AddStats allStats={this.props.stats} id={this.props.stats.id} onSubmit={this.props.onSubmit} closeModal={this.toggle}></AddStats>
           </ModalBody>
           <ModalFooter>
             <Button className="buttonWidth" color="danger" onClick={this.removeStatHandler}>Delete Entry</Button>
