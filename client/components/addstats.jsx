@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import DatePicker from 'react-datepicker';
-// import {format, parseISO} from 'date-fns';
+import {format} from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -14,11 +14,12 @@ class AddStats extends React.Component {
     super(props);
     this.state = {
       "date": new Date(),
-      "outcome": '',
-      "kills": 0,
-      "deaths": 0,
-      "assists": 0,
-      "id": null
+      "outcome": 'W/L/T',
+      "kills": "Kills",
+      "deaths": "Deaths",
+      "assists": "Assists",
+      "id": null, 
+      "outcomeDivClass": "win"
 
     };
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -41,6 +42,29 @@ class AddStats extends React.Component {
         id: this.props.id
       })
     }
+    
+    if(this.props.allStats.kills){
+      this.setState({
+        "kills": this.props.allStats.kills
+            })
+    }
+   
+    if(this.props.allStats.deaths){
+      this.setState({
+        "deaths": this.props.allStats.deaths
+      })
+    }
+    
+    if(this.props.allStats.assists){
+      this.setState({
+        "assists": this.props.allStats.assists
+      })
+    }
+    if(this.props.allStats.outcome)({
+      outcome: this.props.allStats.outcome,
+      outcomeDivClass: this.props.allStats.outcome
+    })
+
   }
 
   handleDateChange(date) {
@@ -51,17 +75,20 @@ class AddStats extends React.Component {
   }
   handleWinChange() {
     this.setState({
-      outcome: 'win'
+      outcome: 'win',
+      outcomeDivClass: 'win'
     });
   }
   handleLossChange() {
     this.setState({
-      outcome: 'loss'
+      outcome: 'loss', 
+      outcomeDivClass: 'loss'
     });
   }
   handleTieChange() {
     this.setState({
-      outcome: 'tie'
+      outcome: 'tie',
+      outcomeDivClass: 'tie'
     });
   }
   handleKillChange(event) {
@@ -118,18 +145,15 @@ class AddStats extends React.Component {
       })
   }
   render() {
-    // console.log("add stats close mdal", this.props);
-    var outcomeVar = 'W/L/T';
-    if (this.state.outcome === "win") {
-      outcomeVar = 'Win'
-    } else if (this.state.outcome === "loss") {
-      outcomeVar = 'Loss'
-    } else if (this.state.outcome === "tie") {
-      outcomeVar = 'Tie'
-    }
-    console.log("add stats props", this.props);
+    console.log("stats in add stats", this.props.allStats);
+    // var outComeDivClass  = "win";
+    // if(this.state.outcome ==="loss"){
+    //   outComeDivClass = "loss"
+    // }
+    // if(this.state.outcome ==="tie"){
+    //   outComeDivClass = "tie"
+    // }
     return (
-
       <Form className="statsInput">
         <Row className="d-flex justify-content-center">
           <Col  className="d-flex justify-content-center">
@@ -145,8 +169,8 @@ class AddStats extends React.Component {
           </Col>
           <Col  className="d-flex justify-content-center">
             <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                {outcomeVar}
+              <Dropdown.Toggle className={this.state.outcomeDivClass} id="dropdown-basic">
+                {this.state.outcome}
               </Dropdown.Toggle>
               <Dropdown.Menu className="dropDownDivLength">
                 <Dropdown.Item className="win"  onClick={this.handleWinChange}>Win</Dropdown.Item>
@@ -158,13 +182,13 @@ class AddStats extends React.Component {
         </Row>
         <Row>
           <Col>
-            <Form.Control className="align-self-center regular-sized-inputs" onChange={this.handleKillChange} size="sm" type="number" placeholder="Kills"/>
+            <Form.Control className="align-self-center regular-sized-inputs" onChange={this.handleKillChange} size="sm" type="number" placeholder={this.state.kills}/>
           </Col>
           <Col>
-            <Form.Control className="align-self-center regular-sized-inputs"  onChange={this.handleDeathChange} size="sm" type="number" placeholder="Deaths"/>
+            <Form.Control className="align-self-center regular-sized-inputs"  onChange={this.handleDeathChange} size="sm" type="number" placeholder={this.state.deaths}/>
           </Col>
           <Col>
-            <Form.Control className="align-self-center regular-sized-inputs" onChange={this.handleAssistChange} size="sm" type="number" placeholder="Assists"/>
+            <Form.Control className="align-self-center regular-sized-inputs" onChange={this.handleAssistChange} size="sm" type="number" placeholder={this.state.assists}/>
           </Col>
         </Row>
         <Row>
