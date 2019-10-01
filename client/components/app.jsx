@@ -84,7 +84,6 @@ class App extends React.Component {
       },
       body: JSON.stringify(stats)
     }
-    console.log("stats", stats);
     fetch('/api/create', fetchData)
       .then(response=> response.json())
       .then(() => {
@@ -95,7 +94,6 @@ class App extends React.Component {
   }
 
   removeStats(id){
-    console.log("remove worked", id);
       var removeData = {
         method: "DELETE"
       }
@@ -129,7 +127,7 @@ class App extends React.Component {
                 <h4>Input Stats</h4>
               </ModalHeader>
               <ModalBody className="d-flex justify-content-center">
-              <AddStats onSubmit={this.createOrModify} toggleOff={this.handleModalToggle}></AddStats>
+              <AddStats onSubmit={this.createOrModify}  toggleOff={this.handleModalToggle}></AddStats>
               </ModalBody>
           </Modal>
         </div>
