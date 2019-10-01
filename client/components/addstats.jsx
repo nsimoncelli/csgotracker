@@ -31,8 +31,13 @@ class AddStats extends React.Component {
     this.handleDeathChange = this.handleDeathChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.disableSubmit = this.disableSubmit.bind(this);
   }
-
+  // disableSubmit(){
+  //   if(this.state.kills==='W/L/T' || this.state.deaths<0 || this.state.deaths==="Deaths" || this.state.kills==="Kills" || this.state.kills<0 || this.state.assists<0 || this.state.assists==="Assists"){
+  //     return false;
+  //   }
+  // }
   componentDidMount(){
     if(!this.props.id){
       return;
@@ -119,6 +124,7 @@ class AddStats extends React.Component {
       if(this.state.kills<0 || this.state.deaths <0 || this.state.assists <0){
         return;
       }
+      
       if(this.props.closeModal){
         this.props.closeModal();
       }
@@ -145,14 +151,6 @@ class AddStats extends React.Component {
       })
   }
   render() {
-    console.log("stats in add stats", this.props.allStats);
-    // var outComeDivClass  = "win";
-    // if(this.state.outcome ==="loss"){
-    //   outComeDivClass = "loss"
-    // }
-    // if(this.state.outcome ==="tie"){
-    //   outComeDivClass = "tie"
-    // }
     return (
       <Form className="statsInput">
         <Row className="d-flex justify-content-center">
@@ -204,7 +202,7 @@ class AddStats extends React.Component {
         </Row>
         <Row>
           <Col>
-            <Button  className="btn-block" variant="primary" type="submit" onClick={this.handleSubmit}>
+            <Button  className="btn-block" variant="primary" type="submit" disabled={!this.state.kills==='W/L/T' || this.state.deaths<0 || this.state.deaths==="Deaths" || this.state.kills==="Kills" || this.state.kills<0 || this.state.assists<0 || this.state.assists==="Assists"} onClick={this.handleSubmit}>
                         Submit
             </Button>
           </Col>
