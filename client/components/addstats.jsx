@@ -14,7 +14,7 @@ class AddStats extends React.Component {
     super(props);
     this.state = {
       "date": new Date(),
-      "outcome": 'W/L/T',
+      "outcome": 'win',
       "kills": "Kills",
       "deaths": "Deaths",
       "assists": "Assists",
@@ -31,13 +31,9 @@ class AddStats extends React.Component {
     this.handleDeathChange = this.handleDeathChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.disableSubmit = this.disableSubmit.bind(this);
+
   }
-  // disableSubmit(){
-  //   if(this.state.kills==='W/L/T' || this.state.deaths<0 || this.state.deaths==="Deaths" || this.state.kills==="Kills" || this.state.kills<0 || this.state.assists<0 || this.state.assists==="Assists"){
-  //     return false;
-  //   }
-  // }
+
   componentDidMount(){
     if(!this.props.id){
       return;
@@ -65,10 +61,6 @@ class AddStats extends React.Component {
         "assists": this.props.allStats.assists
       })
     }
-    if(this.props.allStats.outcome)({
-      outcome: this.props.allStats.outcome,
-      outcomeDivClass: this.props.allStats.outcome
-    })
 
   }
 
@@ -151,6 +143,7 @@ class AddStats extends React.Component {
       })
   }
   render() {
+    console.log("update props", this.state, this.props)
     return (
       <Form className="statsInput">
         <Row className="d-flex justify-content-center">
@@ -202,7 +195,8 @@ class AddStats extends React.Component {
         </Row>
         <Row>
           <Col>
-            <Button  className="btn-block" variant="primary" type="submit" disabled={!this.state.kills==='W/L/T' || this.state.deaths<0 || this.state.deaths==="Deaths" || this.state.kills==="Kills" || this.state.kills<0 || this.state.assists<0 || this.state.assists==="Assists"} onClick={this.handleSubmit}>
+            <Button  className="btn-block" variant="primary" type="submit" 
+            disabled={!this.state.kills==='W/L/T' || this.state.deaths<0 || this.state.deaths==="Deaths" || this.state.kills==="Kills" || this.state.kills<0 || this.state.assists<0 || this.state.assists==="Assists"|| this.state.assists>99|| this.state.deaths>99|| this.state.kills>99} onClick={this.handleSubmit}>
                         Submit
             </Button>
           </Col>
